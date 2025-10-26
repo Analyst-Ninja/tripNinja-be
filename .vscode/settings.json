@@ -1,6 +1,6 @@
 {
     "sonarlint.connectedMode.project": {
-        "connectionId": "http-13-201-15-179-9000-",
+        "connectionId": "http-localhost-9000",
         "projectKey": "tripNinja-be"
     }
 }
