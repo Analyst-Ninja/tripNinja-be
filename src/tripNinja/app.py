@@ -1,7 +1,6 @@
 """...starting code..."""
 
 from typing import Optional
-import os
 import logging
 
 from fastapi import FastAPI, APIRouter, Request, HTTPException, status
@@ -11,38 +10,17 @@ from fastapi.responses import JSONResponse
 APP_NAME = "tripNinja"
 APP_VERSION = "0.1.0"
 
-
-def get_settings():
-    """Fetch environment settings"""
-    return {
-        "debug": os.getenv("DEBUG", "true").lower() in ("1", "true", "yes"),
-        "allowed_origins": os.getenv("ALLOWED_ORIGINS", "*").split(","),
-        "host": os.getenv("HOST", "0.0.0.0"),
-        "port": int(os.getenv("PORT", "8000")),
-    }
-
-
-settings = get_settings()
-
-logging.basicConfig(
-    level=logging.DEBUG if settings["debug"] else logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("app.log", mode="a"),  # optional
-    ],
-)
 logger = logging.getLogger(APP_NAME)
 
 
 def create_app() -> FastAPI:
     """Create App"""
-    app = FastAPI(title=APP_NAME, version=APP_VERSION, debug=settings["debug"])
+    app = FastAPI(title=APP_NAME, version=APP_VERSION)
 
     # CORS
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings["allowed_origins"],
+        allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -99,7 +77,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "src.app:trip_app",
-        host=settings["host"],
-        port=settings["port"],
-        reload=settings["debug"],
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
     )
