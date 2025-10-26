@@ -1,0 +1,18 @@
+# CODEOWNERS — backend-only repo
+#
+# This repository is backend-only and maintained by a single user.
+# Replace `@Analyst-Ninja` below with your actual GitHub username if different.
+# Format: <pattern> <owner> [owner...]
+#
+# All files in the repository are owned by the single user below.
+*    @Analyst-Ninja
+
+# If you later add more owners or teams, list them separated by spaces on the same line:
+#   src/ @username @other-user
+
+# Notes:
+# - Owners must be valid GitHub usernames (e.g. @your-username).
+# - To require code owner approvals, enable "Require review from Code Owners"
+#   in the branch protection rule for your protected branch (e.g. `main`).
+
+# End of CODEOWNERS
