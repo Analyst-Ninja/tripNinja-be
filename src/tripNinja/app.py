@@ -24,7 +24,14 @@ def get_settings():
 
 settings = get_settings()
 
-logging.basicConfig(level=logging.DEBUG if settings["debug"] else logging.INFO)
+logging.basicConfig(
+    level=logging.DEBUG if settings["debug"] else logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("app.log", mode="a"),  # optional
+    ],
+)
 logger = logging.getLogger(APP_NAME)
 
 
