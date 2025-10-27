@@ -1,3 +1,6 @@
+"""Module provide a implementation of home route of API"""
+
+
 class HomeRoute:
     """Route for home for Backend"""
 
